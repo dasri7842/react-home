@@ -1,25 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import { Suspense } from "react";
+import NavBar from "./components/NavBar";
+import { pages } from "./utils/Pages";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
+import Footer from "./components/Footer";
 
-function App() {
+const App = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+        <NavBar pages={pages} />
+        <div className="content">
+          <Suspense fallback={<div />}>
+            <Switch>
+              {pages.map((page, index) => (
+                <Route
+                  exact
+                  path={page.pageLink}
+                  component={page.view}
+                  key={index}
+                />
+              ))}
+            </Switch>
+            <Redirect to="/" />
+          </Suspense>
+        </div>
+        <Footer />
+      </Router>
     </div>
   );
-}
+};
 
 export default App;
