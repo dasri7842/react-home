@@ -16,9 +16,9 @@ const Footer = () => {
           </NavLink>
         ))}
       </div>
-      <p>Copyright © 2021 Electura | No rights reserved!</p>
+      <p>Copyright © 2021 Electura | All rights reserved!</p>
     </footer>
   );
 };
 
-export default Footer;
+export default React.memo(Footer);

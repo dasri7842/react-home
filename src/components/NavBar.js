@@ -13,9 +13,9 @@ import {
   NavLink,
 } from "reactstrap";
 
-const Example = ({ pages }) => {
+const NavBar = ({ pages }) => {
   const [collapsed, setCollapsed] = useState(true);
-  const toggleNavbar = () => setCollapsed(!collapsed); //navbar Toggler
+  const toggleNavbar = () => setCollapsed(!collapsed);
   const closeNavbar = () => {
     if (collapsed) return;
     setCollapsed(true); // strictly closes the navbar.
@@ -53,7 +53,7 @@ const Example = ({ pages }) => {
             ))}
 
             <NavItem className="mx-2">
-              <NavLink>
+              <NavLink href={`tel:${PhoneNumber}`}>
                 <PhoneCall color={"#29d8db"} /> {PhoneNumber}
               </NavLink>
             </NavItem>
@@ -64,4 +64,4 @@ const Example = ({ pages }) => {
   );
 };
 
-export default Example;
+export default React.memo(NavBar);

@@ -1,3 +1,5 @@
+import React from "react";
+
 const FeatureBox = ({ id, img, title, text, options }) => {
   return (
     <div
@@ -22,4 +24,4 @@ const FeatureBox = ({ id, img, title, text, options }) => {
   );
 };
 
-export default FeatureBox;
+export default React.memo(FeatureBox);

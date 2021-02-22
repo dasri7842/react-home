@@ -9,33 +9,33 @@ import Register from "./../Register";
 
 const Variants = {
   hidden: {
-    x: "-15vh",
+    y: "15vh",
     opacity: 0,
   },
   visible: {
-    x: 0,
+    y: 0,
     opacity: 1,
     transition: {
-      delay: 0.5,
-      duration: 1,
+      delay: 0.8,
+      duration: 1.2,
       type: "spring",
     },
   },
 };
 
 const Banner = () => {
-  const [state, setState] = useState(0);
+  const [state, setState] = useState(0); // 1 -> for login popup, 2 -> register and 0 -> image.
   return (
-    <div className="banner">
+    <motion.div
+      className="banner"
+      variants={Variants}
+      initial="hidden"
+      animate="visible"
+    >
       <div className="px-lg-4 mx-lg-5 d-lg-flex justify-content-center align-items-center">
-        <motion.div
-          className="mx-3 col-lg-8"
-          variants={Variants}
-          initial="hidden"
-          animate="visible"
-        >
+        <div className="mx-3 col-lg-6">
           <h3>Your Learning Journey Matters to Us</h3>
-          <hr className="mr-5" />
+          <hr className="line" />
           <p className="display-3">
             Future achievers study from IITians Online
           </p>
@@ -43,35 +43,32 @@ const Banner = () => {
             <NavLink
               onClick={() => setState(2)}
               tag={Link}
-              to={{ pathname: "/", state: "hello" }}
+              to={{ pathname: "/", state: "Get started" }}
             >
               Get started <ArrowRightCircle color={"#29d8db"} size={25} />
             </NavLink>
             <NavLink
               tag={Link}
-              to={{ pathname: "/", state: "hello" }}
+              to={{ pathname: "/", state: "Login Page" }}
               onClick={() => setState(1)}
             >
               Login <ArrowRightCircle color={"#29d8db"} size={25} />
             </NavLink>
           </div>
-        </motion.div>
-        <motion.div
-          className="my-5 col-lg-4"
-          variants={Variants}
-          initial="hidden"
-          animate="visible"
-        >
+        </div>
+        <div className="my-5 col-lg-6">
           {state === 0 ? (
-            <img src={banner1} className="img-fluid" alt="banner"></img>
+            <div className="d-flex justify-content-center">
+              <img src={banner1} className="img-fluid" alt="banner"></img>
+            </div>
           ) : state === 1 ? (
             <Login />
           ) : (
             <Register />
           )}
-        </motion.div>
+        </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

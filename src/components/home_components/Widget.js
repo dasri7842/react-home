@@ -17,4 +17,4 @@ const Widget = ({ quote, title, text }) => {
   );
 };
 
-export default Widget;
+export default React.memo(Widget);
