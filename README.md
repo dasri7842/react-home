@@ -1,6 +1,6 @@
 # Before Getting Started
 
-## Check out Here Live [URL](https://eloquent-albattani-a570c6.netlify.app/)
+## Check out Here Live [URL](https://elastic-hopper-b4dc9a.netlify.app/)
 
 ## Steps to run it locally :-
 
